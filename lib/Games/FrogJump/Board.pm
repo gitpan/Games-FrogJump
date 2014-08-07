@@ -103,7 +103,8 @@ sub draw_win {
 sub draw_quit {
     my $self = shift;
     $self->move_cursor(0, $self->content_height + 5);
-    say '';
+    say color('reset') . '';
+    $self->show_cursor;
 }
 sub draw_border {
     my $self = shift;
@@ -127,8 +128,8 @@ sub board_width {
 
 sub move_cursor {
     my ( $self, $dx, $dy ) = @_;
-    $dx > 0 ? do { printf "\e[%dC", $dx } : do { printf "\e[%dD", -$dx };
-    $dy > 0 ? do { printf "\e[%dB", $dy } : do { printf "\e[%dA", -$dy };
+    $dx > 0 ? do { printf "\e[%dC", $dx } : $dx < 0 ? do { printf "\e[%dD", -$dx } : do {};
+    $dy > 0 ? do { printf "\e[%dB", $dy } : $dy < 0 ? do { printf "\e[%dA", -$dy } : do {};
 }
 
 sub save_cursor {
@@ -149,6 +150,12 @@ sub hide_cursor {
 sub show_cursor {
     my $self = shift;
     print "\e[?25h";
+}
+
+sub clear_screen {
+    my $self = shift;
+    print "\e[1J";
+    print "\e[1;1H";
 }
 
 sub get_frog {
@@ -183,6 +190,5 @@ sub set_current_frog {
     $self->current_frog($frog);
     $frog->active;
 }
-
 
 1;

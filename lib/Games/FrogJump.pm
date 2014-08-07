@@ -31,7 +31,7 @@ package Games::FrogJump;
 use 5.012;
 use Moo;
 
-our $VERSION = '0.01';
+our $VERSION = '0.02';
 
 use Time::HiRes;
 
@@ -56,6 +56,7 @@ sub run {
             $game = Games::FrogJump::Game->new();
         }
         $game->init;
+        
       RUN: $game->draw;
 		my $time = Time::HiRes::time;
       PLAY: while ( 1 ) {

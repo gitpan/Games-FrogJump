@@ -1,2 +1,8 @@
+0.02      2014-08-07 22:15:17+08:00 Asia/Shanghai
+ - fix the tail has a CR in shebang of bin/frogjump
+ - fix the bug : frog will disappear when he jump at the end of stone
+ - now can work on linux
+ - add a SIGINT for reset the cursor when Ctrl-C will cause the cursor disappear or terminal colored
+ 
 0.01      2014-08-06 13:03:28+08:00 Asia/Shanghai
  - First release

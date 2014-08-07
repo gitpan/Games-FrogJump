@@ -17,7 +17,7 @@ sub init {
     foreach my $index ( 0..$self->stone_number - 1 ){
         my $frog = Games::FrogJump::Frog->new(
             direction    => $directions->[$index],
-            stone_index  => $index,
+           stone_index  => $index,
             bg_color     => $index < 3  ? 'on_yellow' :
                             $index == 3 ? 'on_black' :
                             'on_green',
@@ -28,6 +28,9 @@ sub init {
         $self->set_frog( $index, $frog );
     }
     $self->set_current_frog($self->get_frog(0));
+    $SIG{INT} = sub { $self->draw_quit; exit 1 };
+    $SIG{__DIE__} = sub { $self->draw_quit; exit 1};
+    $self->clear_screen;
 }
 
 sub act {
@@ -117,7 +120,7 @@ sub move_right {
 }
 
 sub alarm_no_jump {
-    return;
+    return 1;
 }
 
 sub win {

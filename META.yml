@@ -16,6 +16,7 @@ requires:
   Color::ANSI::Util: 0
   File::HomeDir: 0
   File::Spec::Functions: 0
+  List::MoreUtils: 0
   List::Util: 0
   Moo: 0
   Storable: 0
@@ -23,9 +24,8 @@ requires:
   Term::ReadKey: 0
   Text::Wrap: 0
   Time::HiRes: 0
-  constant: 0
   if: 0
   perl: 5.012
   strict: 0
   warnings: 0
-version: 0.03
+version: 0.04

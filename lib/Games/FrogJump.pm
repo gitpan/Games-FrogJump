@@ -31,18 +31,15 @@ package Games::FrogJump;
 use 5.012;
 use Moo;
 
-our $VERSION = '0.03';
+our $VERSION = '0.04';
 
 use Time::HiRes;
-
-use constant {
-	FRAME_TIME => 1/4,
-};
+our $FRAME_TIME = 1/20;
 
 use Games::FrogJump::Game;
 use Games::FrogJump::Frog;
 use Games::FrogJump::Input;
-
+use Games::FrogJump::Animation;
 
 sub run {
     my $self = shift;
@@ -55,10 +52,12 @@ sub run {
         if ( !$game ) {
             $game = Games::FrogJump::Game->new();
         }
+        if ( $restart ){
+            $game->restart;
+        }
         $game->init;
-        
       RUN: $game->draw;
-		my $time = Time::HiRes::time;
+        my $time = Time::HiRes::time;
       PLAY: while ( 1 ) {
           while ( defined(my $key = Games::FrogJump::Input::read_key) ) {
               my $cmd = Games::FrogJump::Input::key_to_cmd($key);
@@ -74,10 +73,16 @@ sub run {
                   $game->act($cmd);
               }
           }
+          if ( @{$game->animations} ){
+              foreach my $animation ( @{$game->animations} ){
+                  $game->remove_animation($animation) if $animation->end;
+                  $animation->update;
+              }
+          }
           $game->draw;
           my $new_time = Time::HiRes::time;
           my $delta_time = $new_time - $time;
-          my $delay = FRAME_TIME - $delta_time;
+          my $delay = $FRAME_TIME - $delta_time;
           $time = $new_time;
           if ($delay > 0) {
               Time::HiRes::sleep($delay);
@@ -95,4 +100,3 @@ sub run {
     $game->draw_quit;
 }
 1;
-

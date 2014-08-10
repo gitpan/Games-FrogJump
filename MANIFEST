@@ -9,6 +9,7 @@ README.pod
 bin/frogjump
 bin/frogjump.bat
 lib/Games/FrogJump.pm
+lib/Games/FrogJump/Animation.pm
 lib/Games/FrogJump/Board.pm
 lib/Games/FrogJump/Frog.pm
 lib/Games/FrogJump/Game.pm

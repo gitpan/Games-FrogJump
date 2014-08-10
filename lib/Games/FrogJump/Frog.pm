@@ -11,6 +11,10 @@ has bg_color     => is => 'rw', default => 'reset';
 has fr_color     => is => 'rw', default => 'blue';
 has stored_ansi  => is => 'rw';
 has ansi         => is => 'rw', default => '   ';
+has x            => is => 'rw', default => 0;
+has y            => is => 'rw', default => 0;
+has oldx         => is => 'rw', default => 0;
+has oldy         => is => 'rw', default => 0;
 
 sub graph {
     my $self = shift;
@@ -31,13 +35,15 @@ sub unactive {
     $self->ansi($self->stored_ansi);
 }
 
-sub jump_left {
-    my ( $self, $step ) = @_;
-    $self->stone_index($self->stone_index - $step);
+sub set_x {
+    my ( $self, $value ) = @_;
+    $self->oldx($self->x);
+    $self->x($value);
 }
 
-sub jump_right {
-    my ( $self, $step ) = @_;
-    $self->stone_index($self->stone_index + $step);
+sub set_y {
+    my ( $self, $value ) = @_;
+    $self->oldy($self->y);
+    $self->y($value);
 }
 1;

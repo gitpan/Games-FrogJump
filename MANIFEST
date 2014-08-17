@@ -8,6 +8,8 @@ README
 README.pod
 bin/frogjump
 bin/frogjump.bat
+bin/test.pl
+dist.ini
 lib/Games/FrogJump.pm
 lib/Games/FrogJump/Animation.pm
 lib/Games/FrogJump/Board.pm

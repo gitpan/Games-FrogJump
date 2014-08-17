@@ -10,7 +10,7 @@ use ExtUtils::MakeMaker ;
 
 
 my %WriteMakefileArgs = (
-  "ABSTRACT" => "An ASCII game for fun ",
+  "ABSTRACT" => "An ASCII game for fun",
   "AUTHOR" => "tadegenban <tadegenban\@gmail.com>",
   "CONFIGURE_REQUIRES" => {
     "ExtUtils::MakeMaker" => 0
@@ -18,27 +18,22 @@ my %WriteMakefileArgs = (
   "DISTNAME" => "Games-FrogJump",
   "EXE_FILES" => [
     "bin/frogjump",
-    "bin/frogjump.bat"
+    "bin/frogjump.bat",
+    "bin/test.pl"
   ],
   "LICENSE" => "bsd",
   "NAME" => "Games::FrogJump",
   "PREREQ_PM" => {
-    "Color::ANSI::Util" => 0,
-    "File::HomeDir" => 0,
-    "File::Spec::Functions" => 0,
     "List::MoreUtils" => 0,
-    "List::Util" => 0,
     "Moo" => 0,
-    "Storable" => 0,
     "Term::ANSIColor" => 0,
     "Term::ReadKey" => 0,
-    "Text::Wrap" => 0,
     "Time::HiRes" => 0,
     "if" => 0,
     "strict" => 0,
     "warnings" => 0
   },
-  "VERSION" => "0.04",
+  "VERSION" => "0.05",
   "test" => {
     "TESTS" => ""
   }
@@ -46,16 +41,10 @@ my %WriteMakefileArgs = (
 
 
 my %FallbackPrereqs = (
-  "Color::ANSI::Util" => 0,
-  "File::HomeDir" => 0,
-  "File::Spec::Functions" => 0,
   "List::MoreUtils" => 0,
-  "List::Util" => 0,
   "Moo" => 0,
-  "Storable" => 0,
   "Term::ANSIColor" => 0,
   "Term::ReadKey" => 0,
-  "Text::Wrap" => 0,
   "Time::HiRes" => 0,
   "if" => 0,
   "strict" => 0,
